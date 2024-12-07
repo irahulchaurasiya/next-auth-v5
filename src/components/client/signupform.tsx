@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { credentialsSignIn, githubSignIn } from "@/actions/signup";
-import { redirect, useRouter } from "next/navigation";
+import { credentialsSignIn } from "@/actions/signup";
+import { useRouter } from "next/navigation";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -30,11 +30,6 @@ const SignupForm = () => {
       toast.error("User already");
     }
   };
-
-  const signInGithub = async () => {
-    await githubSignIn();
-    router.push("/login");
-  };
   return (
     <Box>
       <Toaster />
@@ -56,12 +51,6 @@ const SignupForm = () => {
         </form>
       </Box>
       <Box className="flex flex-col justify-center items-center gap-4">
-        <span>Or</span>
-        <form action={signInGithub}>
-          <Button type="submit" className="bg-gray-800 text-white">
-            Signup with github
-          </Button>
-        </form>
         <Link href="/login">Already have an account? Login</Link>
       </Box>
     </Box>
