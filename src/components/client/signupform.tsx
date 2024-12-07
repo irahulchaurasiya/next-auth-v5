@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { credentialsSignIn, githubSignIn } from "@/actions/signup";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -33,6 +33,7 @@ const SignupForm = () => {
 
   const signInGithub = async () => {
     await githubSignIn();
+    router.push("/login");
   };
   return (
     <Box>

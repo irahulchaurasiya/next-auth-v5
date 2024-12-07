@@ -10,7 +10,7 @@ const page = async () => {
   const session = await auth();
 
   const loginGithub = async () => {
-    "use server"
+    "use server";
     await githubLogin();
   };
 
