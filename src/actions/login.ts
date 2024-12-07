@@ -14,4 +14,8 @@ const credentialsLogin = async (email: string, password: string) => {
   }
 };
 
-export { credentialsLogin };
+const githubLogin = async () => {
+  await signIn("github");
+};
+
+export { credentialsLogin, githubLogin };

@@ -3,6 +3,7 @@ import { User } from "@/models/userModel";
 import { hash } from "bcryptjs";
 import { redirect } from "next/navigation";
 import { connectToDatabase } from "@/lib/utils";
+import { signIn } from "@/auth";
 
 const credentialsSignIn = async (
   name: string,
@@ -14,7 +15,7 @@ const credentialsSignIn = async (
   const user = await User.findOne({ email });
 
   if (user) {
-    throw new Error("User already exists.");
+    return new Error("User already exists.");
   }
 
   const hashedpassword = await hash(password, 10);
@@ -28,4 +29,8 @@ const credentialsSignIn = async (
   redirect("/login");
 };
 
-export { credentialsSignIn };
+const githubSignIn = async () => {
+  await signIn("github");
+};
+
+export { credentialsSignIn , githubSignIn };

@@ -4,9 +4,15 @@ import { LoginForm } from "@/components/client/form";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { Box, Button, Typography } from "@mui/material";
+import { githubLogin } from "@/actions/login";
 
 const page = async () => {
   const session = await auth();
+
+  const loginGithub = async () => {
+    "use server"
+    await githubLogin();
+  };
 
   if (session?.user) redirect("/");
   return (
@@ -18,7 +24,7 @@ const page = async () => {
         <LoginForm />
         <Typography className="flex flex-col gap-4 justify-center items-center">
           <span>Or </span>
-          <form action="">
+          <form action={loginGithub}>
             <Button type="submit" className="bg-gray-800 text-white">
               Login with github
             </Button>
