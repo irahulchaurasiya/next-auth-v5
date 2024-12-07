@@ -31,7 +31,6 @@ const credentialsSignIn = async (
 
 const githubSignIn = async () => {
   await signIn("github");
-  redirect("/login");
 };
 
 export { credentialsSignIn, githubSignIn };
